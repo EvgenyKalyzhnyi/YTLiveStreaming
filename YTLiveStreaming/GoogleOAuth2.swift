@@ -37,11 +37,14 @@ public class GoogleOAuth2: NSObject {
       return accessToken != nil
    }
 
-   public var accessToken: String? {
-      didSet {
-         keychain[kOAuth2AccessTokenService] = accessToken
-      }
-   }
+    public var accessToken: String? {
+        set {
+            keychain[kOAuth2AccessTokenService] = newValue
+        }
+        get {
+            keychain[kOAuth2AccessTokenService]
+        }
+    }
 
    public func clearToken() {
       keychain[kOAuth2AccessTokenService] = nil
